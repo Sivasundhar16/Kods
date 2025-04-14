@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 const Domhost = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchDomUsers = async () => {
       try {
         const response = await axios.get("http://localhost:3001/domuser");
         setUsers(response.data);
+        setError(null);
       } catch (error) {
         console.error("Error fetching dom users:", error);
+        setError("Failed to load DOM users. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -41,35 +47,43 @@ const Domhost = () => {
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredUsers.length === 0 && (
-          <p className="text-center text-gray-500 col-span-full">
-            No DOM users found.
-          </p>
-        )}
+      {loading ? (
+        <p className="text-center text-gray-500">Loading DOM users...</p>
+      ) : error ? (
+        <p className="text-center text-red-500">{error}</p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredUsers.length === 0 && (
+            <p className="text-center text-gray-500 col-span-full">
+              No DOM users found.
+            </p>
+          )}
 
-        {filteredUsers.map((user) => (
-          <Link
-            key={user._id}
-            to={`/domuserdetails/${user._id}`} // Ensure the user ID is passed here
-            className="block bg-white border border-purple-200 rounded-xl p-5 shadow-md transition-all duration-300 bg-gradient-to-br from-indigo-50 to-purple-100 hover:ring-2 hover:ring-indigo-400"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-lg font-bold shadow-inner">
-                {user.hostName?.[0]?.toUpperCase() || "?"}
+          {filteredUsers.map((user) => (
+            <Link
+              key={user._id}
+              to={`/domuserdetails/${user.id}`}
+              className="block bg-white border border-purple-200 rounded-xl p-5 shadow-md transition-all duration-300 bg-gradient-to-br from-indigo-50 to-purple-100 hover:ring-2 hover:ring-indigo-400"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-lg font-bold shadow-inner">
+                  {user.hostName && user.hostName.length > 0
+                    ? user.hostName[0].toUpperCase()
+                    : "?"}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {user.hostName || "Unknown"}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {user.domeName || "No dome name"}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {user.hostName || "Unknown"}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {user.domeName || "No dome name"}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

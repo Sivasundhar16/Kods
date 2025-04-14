@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import { Register } from "./pages/Register";
@@ -13,19 +13,30 @@ import DomUserDetails from "./pages/DomUserDetails ";
 
 const App = () => {
   const location = useLocation();
-  const [available, setAvailable] = useState(() => {
-    return localStorage.getItem("available") === "true";
-  });
+  const [available, setAvailable] = useState(false);
+
+  // Routes that should show the navbar when user is authenticated
+  const navbarRoutes = ["/admin", "/domhost", "/details", "/domuserdetails"];
+
+  useEffect(() => {
+    // Check localStorage on component mount
+    const storedAvailable = localStorage.getItem("available") === "true";
+    setAvailable(storedAvailable);
+  }, []);
 
   const handleSetAvailable = (value) => {
-    setAvailable(value);
-    localStorage.setItem("available", value);
+    try {
+      setAvailable(value);
+      localStorage.setItem("available", String(value));
+    } catch (error) {
+      console.error("Error accessing localStorage:", error);
+    }
   };
 
-  const showNavbarRoutes = ["/admin", "/domhost", "/details"];
+  // Simplified navbar visibility logic
   const shouldShowNavbar =
     available &&
-    showNavbarRoutes.some((route) => location.pathname.startsWith(route));
+    navbarRoutes.some((route) => location.pathname.startsWith(route));
 
   return (
     <div className="flex w-full">
