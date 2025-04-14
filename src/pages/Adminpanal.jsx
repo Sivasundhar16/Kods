@@ -20,7 +20,7 @@ const UserList = () => {
   }, []);
 
   const filteredUsers = users.filter((user) =>
-    user.firstName.toLowerCase().includes(search.toLowerCase())
+    user.firstName?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -54,13 +54,15 @@ const UserList = () => {
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 text-white flex items-center justify-center text-lg font-bold shadow-inner">
-                {user.firstName[0]}
+                {user.firstName?.[0] || "?"}
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">
-                  {user.firstName} {user.lastName}
+                  {user.firstName || "Unknown"} {user.lastName || ""}
                 </h3>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <p className="text-sm text-gray-500">
+                  {user.email || "No email"}
+                </p>
               </div>
             </div>
           </Link>

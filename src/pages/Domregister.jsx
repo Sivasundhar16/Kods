@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 export const Domregister = ({ setAvalable }) => {
   const navigate = useNavigate();
   const [userdata, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    hostName: "",
+    domeName: "",
     password: "",
   });
 
@@ -27,14 +26,13 @@ export const Domregister = ({ setAvalable }) => {
       console.log(data);
 
       setUserData({
-        firstName: "",
-        lastName: "",
-        email: "",
+        hostName: "",
+        domeName: "",
         password: "",
       });
 
       setAvalable(true);
-      navigate("/admin");
+      navigate("/domhost");
     } catch (error) {
       console.log(error.message);
     }
@@ -44,33 +42,26 @@ export const Domregister = ({ setAvalable }) => {
     <div className="w-full flex justify-center ">
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-          Create New User
+          Create DOM Users
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={userdata.firstName}
+            name="hostName"
+            placeholder="Host Name"
+            value={userdata.hostName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={userdata.lastName}
+            name="domeName"
+            placeholder="Dome Name"
+            value={userdata.domeName}
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={userdata.email}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+
           <input
             type="password"
             name="password"

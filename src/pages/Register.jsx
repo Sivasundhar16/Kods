@@ -42,7 +42,7 @@ export const Register = ({ setAvalable }) => {
 
   return (
     <div className="w-full flex justify-center ">
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md p-6">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md p-6 ">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
           Create New User
         </h2>
