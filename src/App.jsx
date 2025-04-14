@@ -7,6 +7,7 @@ import Navbar from "./Navbar/Navbar";
 import Domhost from "./pages/Domhost";
 import AuthButtons from "./pages/Home";
 import Details from "./pages/Details";
+import Decidepage from "./pages/Decidepage";
 
 const App = () => {
   const location = useLocation();
@@ -19,7 +20,6 @@ const App = () => {
     localStorage.setItem("available", value);
   };
 
-  // Define routes where Navbar should be shown
   const showNavbarRoutes = ["/admin", "/domhost", "/details"];
   const shouldShowNavbar =
     available &&
@@ -40,6 +40,7 @@ const App = () => {
         />
         <Route path="/admin" element={<Adminpanal />} />
         <Route path="/domhost" element={<Domhost />} />
+        <Route path="/decide" element={<Decidepage />} />
         <Route path="/details/:id" element={<Details />} />
       </Routes>
     </div>
