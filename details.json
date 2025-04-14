@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "1d28",
+      "firstName": "karan",
+      "lastName": "adfadfa",
+      "email": "dafdaf@gmail.com",
+      "password": "adfafad"
+    },
+    {
+      "id": "9d02",
+      "firstName": "Sivasundhar",
+      "lastName": "V",
+      "email": "vkabd002@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "14b4",
+      "firstName": "Santhosh",
+      "lastName": "R",
+      "email": "dafdaf@gmail.com",
+      "password": "235345435"
+    },
+    {
+      "id": "2060",
+      "firstName": "Rishitha",
+      "lastName": "P",
+      "email": "rishitha@gamil.com",
+      "password": "12q2343"
+    }
+  ]
+}
