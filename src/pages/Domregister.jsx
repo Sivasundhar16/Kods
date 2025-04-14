@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Domregister = ({ setAvalable }) => {
+export const Domregister = ({ setAvailable }) => {
   const navigate = useNavigate();
   const [userdata, setUserData] = useState({
     hostName: "",
@@ -22,7 +22,7 @@ export const Domregister = ({ setAvalable }) => {
     e.preventDefault();
 
     try {
-      const data = await axios.post("http://localhost:3001/users", userdata);
+      const data = await axios.post("http://localhost:3001/domuser", userdata);
       console.log(data);
 
       setUserData({
@@ -31,7 +31,7 @@ export const Domregister = ({ setAvalable }) => {
         password: "",
       });
 
-      setAvalable(true);
+      setAvailable(true);
       navigate("/domhost");
     } catch (error) {
       console.log(error.message);
@@ -61,7 +61,6 @@ export const Domregister = ({ setAvalable }) => {
             onChange={handleChange}
             className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-
           <input
             type="password"
             name="password"

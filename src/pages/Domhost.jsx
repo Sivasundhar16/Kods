@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -19,9 +19,11 @@ const Domhost = () => {
     fetchDomUsers();
   }, []);
 
-  const filteredUsers = users.filter((user) =>
-    user.hostName?.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) =>
+      user.hostName?.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [users, search]);
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-tr from-green-50 to-green-200 p-6">
@@ -49,7 +51,7 @@ const Domhost = () => {
         {filteredUsers.map((user) => (
           <Link
             key={user._id}
-            to={`/domuserdetails/${user._id}`}
+            to={`/domuserdetails/${user._id}`} // Ensure the user ID is passed here
             className="block bg-white border border-purple-200 rounded-xl p-5 shadow-md transition-all duration-300 bg-gradient-to-br from-indigo-50 to-purple-100 hover:ring-2 hover:ring-indigo-400"
           >
             <div className="flex items-center gap-4">

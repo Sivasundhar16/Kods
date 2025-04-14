@@ -9,6 +9,7 @@ import AuthButtons from "./pages/Home";
 import Details from "./pages/Details";
 import Decidepage from "./pages/Decidepage";
 import { Domregister } from "./pages/Domregister";
+import DomUserDetails from "./pages/DomUserDetails ";
 
 const App = () => {
   const location = useLocation();
@@ -33,31 +34,30 @@ const App = () => {
         <Route path="/" element={<AuthButtons />} />
         <Route
           path="/login"
-          element={<Login setAvalable={handleSetAvailable} />}
+          element={<Login setAvailable={handleSetAvailable} />}
         />
         <Route
           path="/register"
-          element={<Register setAvalable={handleSetAvailable} />}
+          element={<Register setAvailable={handleSetAvailable} />}
         />
         <Route path="/admin" element={<Adminpanal />} />
-        <Route path="/domhost" element={<Domhost />} />
         <Route path="/decide" element={<Decidepage />}>
           <Route
             index
-            element={<Register setAvalable={handleSetAvailable} />}
+            element={<Register setAvailable={handleSetAvailable} />}
           />
           <Route
             path="register"
-            element={<Register setAvalable={handleSetAvailable} />}
+            element={<Register setAvailable={handleSetAvailable} />}
           />
-
           <Route
             path="domregister"
-            element={<Domregister setAvalable={handleSetAvailable} />}
+            element={<Domregister setAvailable={handleSetAvailable} />}
           />
         </Route>
-
         <Route path="/details/:id" element={<Details />} />
+        <Route path="/domhost" element={<Domhost />} />
+        <Route path="/domuserdetails/:id" element={<DomUserDetails />} />
       </Routes>
     </div>
   );
