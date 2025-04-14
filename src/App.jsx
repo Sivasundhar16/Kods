@@ -8,6 +8,7 @@ import Domhost from "./pages/Domhost";
 import AuthButtons from "./pages/Home";
 import Details from "./pages/Details";
 import Decidepage from "./pages/Decidepage";
+import { Domregister } from "./pages/Domregister";
 
 const App = () => {
   const location = useLocation();
@@ -40,7 +41,22 @@ const App = () => {
         />
         <Route path="/admin" element={<Adminpanal />} />
         <Route path="/domhost" element={<Domhost />} />
-        <Route path="/decide" element={<Decidepage />} />
+        <Route path="/decide" element={<Decidepage />}>
+          <Route
+            index
+            element={<Register setAvalable={handleSetAvailable} />}
+          />
+          <Route
+            path="register"
+            element={<Register setAvalable={handleSetAvailable} />}
+          />
+
+          <Route
+            path="domregister"
+            element={<Domregister setAvalable={handleSetAvailable} />}
+          />
+        </Route>
+
         <Route path="/details/:id" element={<Details />} />
       </Routes>
     </div>

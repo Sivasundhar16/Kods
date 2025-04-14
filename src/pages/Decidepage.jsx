@@ -1,25 +1,29 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Decidepage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-100">
-      <div className="flex flex-col sm:flex-row gap-6">
+    <div className="min-h-screen w-full flex flex-col items-center py-10 bg-gradient-to-tr from-blue-100 to-green-300">
+      <div className="flex gap-4 mb-6">
         <button
-          onClick={() => navigate("/register")}
-          className="px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-2xl shadow-lg hover:bg-indigo-700 hover:scale-105 transform transition duration-300 ease-in-out"
+          onClick={() => navigate("register")}
+          className="px-6 py-3 text-lg font-medium border rounded-md hover:bg-gray-100 transition"
         >
           ➕ Add Users
         </button>
 
         <button
-          onClick={() => navigate("/dom-users")}
-          className="px-8 py-4 text-lg font-semibold text-white bg-pink-500 rounded-2xl shadow-lg hover:bg-pink-600 hover:scale-105 transform transition duration-300 ease-in-out"
+          onClick={() => navigate("domregister")}
+          className="px-6 py-3 text-lg font-medium border rounded-md hover:bg-gray-100 transition"
         >
           🏠 Add DOM Users
         </button>
+      </div>
+
+      <div className="w-full max-w-xl">
+        <Outlet />
       </div>
     </div>
   );

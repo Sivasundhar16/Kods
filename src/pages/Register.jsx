@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Register = ({ setAvalable }) => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const Register = ({ setAvalable }) => {
         password: "",
       });
 
-      setAvalable(true); // Set state & localStorage
+      setAvalable(true);
       navigate("/admin");
     } catch (error) {
       console.log(error.message);
@@ -41,59 +41,52 @@ export const Register = ({ setAvalable }) => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-r from-blue-200 to-purple-300 px-4">
-      <div className="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Create User
-        </h1>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+    <div className="w-full flex justify-center ">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md p-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+          Create New User
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input
+            type="text"
             name="firstName"
+            placeholder="First Name"
             value={userdata.firstName}
             onChange={handleChange}
-            type="text"
-            placeholder="First Name"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
-            name="lastName"
             type="text"
+            name="lastName"
             placeholder="Last Name"
             value={userdata.lastName}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
-            name="email"
             type="email"
+            name="email"
+            placeholder="Email Address"
             value={userdata.email}
             onChange={handleChange}
-            placeholder="Email Address"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
-            name="password"
             type="password"
+            name="password"
             placeholder="Password"
-            onChange={handleChange}
             value={userdata.password}
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white rounded-lg py-2 font-semibold hover:bg-blue-600 transition duration-300"
+            className="w-full bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-200"
           >
             Register
           </button>
         </form>
-        {/* <p className="text-sm text-center text-gray-500 mt-4">
-          Already register?
-          <a href="/login" className="text-blue-500 hover:underline ml-1">
-            Go to Login
-          </a>
-        </p> */}
       </div>
-      <Outlet />
     </div>
   );
 };

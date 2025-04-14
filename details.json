@@ -30,10 +30,24 @@
     },
     {
       "id": "d4e1",
-      "firstName": "Sivasundhar",
+      "firstName": "Sundhar",
       "lastName": "s",
       "email": "fafdafa@gmail.com",
       "password": "adfafd"
+    },
+    {
+      "id": "1333",
+      "firstName": "Thor",
+      "lastName": "O",
+      "email": "thor02@gmail.com",
+      "password": "dfafdaf"
+    },
+    {
+      "id": "c776",
+      "firstName": "Robert",
+      "lastName": "jr",
+      "email": "robert@gmail.com",
+      "password": "adfadfhsg"
     }
   ]
 }
