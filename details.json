@@ -79,6 +79,34 @@
       "hostName": "adfadf",
       "domeName": "afadf",
       "password": "sfgsg"
+    },
+    {
+      "id": "e22e",
+      "hostName": "afdafd",
+      "domeName": "adfadf",
+      "password": "afad"
+    },
+    {
+      "id": "c37a",
+      "firstName": "Wanda",
+      "lastName": "M",
+      "email": "23324@gmail.com",
+      "password": "wandamaximof"
+    },
+    {
+      "id": "2475",
+      "firstName": "wanda",
+      "lastName": "maximof",
+      "email": "wanda02@gmail.com",
+      "password": "wandsa"
+    }
+  ],
+  "domuser": [
+    {
+      "_id": "abc123",
+      "hostName": "John",
+      "domeName": "example.com",
+      "password": "secret123"
     }
   ]
 }

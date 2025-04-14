@@ -1,22 +1,72 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 const Domhost = () => {
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const fetchDomUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/domuser");
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching dom users:", error);
+      }
+    };
+
+    fetchDomUsers();
+  }, []);
+
+  const filteredUsers = users.filter((user) =>
+    user.hostName?.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex items-center justify-center p-6">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-10">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
-          Welcome to Domhost 🚀
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Manage your domains, deploy projects, and monitor usage — all in one
-          place.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button className="bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 transition duration-200">
-            Get Started
-          </button>
-          <button className="border border-gray-300 text-gray-800 px-6 py-3 rounded-xl hover:bg-gray-100 transition duration-200">
-            Learn More
-          </button>
-        </div>
+    <div className="min-h-screen w-full bg-gradient-to-tr from-green-50 to-green-200 p-6">
+      <h2 className="text-2xl font-bold text-center text-indigo-700 mb-6">
+        DOM User Dashboard 🚀
+      </h2>
+
+      <div className="mb-6 max-w-md mx-auto">
+        <input
+          type="text"
+          placeholder="Search by Host Name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full px-4 py-2 border border-indigo-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredUsers.length === 0 && (
+          <p className="text-center text-gray-500 col-span-full">
+            No DOM users found.
+          </p>
+        )}
+
+        {filteredUsers.map((user) => (
+          <Link
+            key={user._id}
+            to={`/domuserdetails/${user._id}`}
+            className="block bg-white border border-purple-200 rounded-xl p-5 shadow-md transition-all duration-300 bg-gradient-to-br from-indigo-50 to-purple-100 hover:ring-2 hover:ring-indigo-400"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-lg font-bold shadow-inner">
+                {user.hostName?.[0]?.toUpperCase() || "?"}
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {user.hostName || "Unknown"}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {user.domeName || "No dome name"}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
