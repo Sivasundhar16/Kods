@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1d28",
-      "firstName": "karan",
-      "lastName": "adfadfa",
-      "email": "dafdaf@gmail.com",
-      "password": "adfafad"
-    },
-    {
       "id": "9d02",
       "firstName": "Sivasundhar",
       "lastName": "V",
@@ -27,6 +20,13 @@
       "lastName": "P",
       "email": "rishitha@gamil.com",
       "password": "12q2343"
+    },
+    {
+      "id": "d41b",
+      "firstName": "Kaviya",
+      "lastName": "L",
+      "email": "kaviya02@gmail.com",
+      "password": "kaviya"
     }
   ],
   "domuser": [
@@ -48,7 +48,6 @@
       "domeName": "private",
       "password": "afdadadfafd"
     },
-
     {
       "id": "cae2",
       "hostName": "Rishitha",
