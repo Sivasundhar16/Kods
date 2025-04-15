@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { showNavbar, hideNavbar } from "./redux/navbarSlice";
+
 import Login from "./pages/Login";
 import { Register } from "./pages/Register";
 import Adminpanal from "./pages/Adminpanal";
@@ -13,58 +16,32 @@ import DomUserDetails from "./pages/DomUserDetails ";
 
 const App = () => {
   const location = useLocation();
-  const [available, setAvailable] = useState(false);
+  const dispatch = useDispatch();
+  const show = useSelector((state) => state.navbar.showNavbar);
 
-  // Routes that should show the navbar when user is authenticated
   const navbarRoutes = ["/admin", "/domhost", "/details", "/domuserdetails"];
 
   useEffect(() => {
-    // Check localStorage on component mount
-    const storedAvailable = localStorage.getItem("available") === "true";
-    setAvailable(storedAvailable);
-  }, []);
-
-  const handleSetAvailable = (value) => {
-    try {
-      setAvailable(value);
-      localStorage.setItem("available", String(value));
-    } catch (error) {
-      console.error("Error accessing localStorage:", error);
-    }
-  };
-
-  // Simplified navbar visibility logic
-  const shouldShowNavbar =
-    available &&
-    navbarRoutes.some((route) => location.pathname.startsWith(route));
+    const available = localStorage.getItem("available") === "true";
+    const shouldShow =
+      available &&
+      navbarRoutes.some((route) => location.pathname.startsWith(route));
+    if (shouldShow) dispatch(showNavbar());
+    else dispatch(hideNavbar());
+  }, [location.pathname, dispatch]); // Added dispatch to dependency array
 
   return (
     <div className="flex w-full">
-      {shouldShowNavbar && <Navbar />}
+      {show && <Navbar />}
       <Routes>
         <Route path="/" element={<AuthButtons />} />
-        <Route
-          path="/login"
-          element={<Login setAvailable={handleSetAvailable} />}
-        />
-        <Route
-          path="/register"
-          element={<Register setAvailable={handleSetAvailable} />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Adminpanal />} />
         <Route path="/decide" element={<Decidepage />}>
-          <Route
-            index
-            element={<Register setAvailable={handleSetAvailable} />}
-          />
-          <Route
-            path="register"
-            element={<Register setAvailable={handleSetAvailable} />}
-          />
-          <Route
-            path="domregister"
-            element={<Domregister setAvailable={handleSetAvailable} />}
-          />
+          <Route index element={<Register />} />
+          <Route path="register" element={<Register />} />
+          <Route path="domregister" element={<Domregister />} />
         </Route>
         <Route path="/details/:id" element={<Details />} />
         <Route path="/domhost" element={<Domhost />} />

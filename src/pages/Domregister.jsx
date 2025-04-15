@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showNavbar } from "../redux/navbarSlice"; // Fixed import to use showNavbar instead of show
 
-export const Domregister = ({ setAvailable }) => {
+export const Domregister = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userdata, setUserData] = useState({
     hostName: "",
     domeName: "",
@@ -14,10 +17,7 @@ export const Domregister = ({ setAvailable }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setUserData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -30,18 +30,13 @@ export const Domregister = ({ setAvailable }) => {
         "http://localhost:3001/domuser",
         userdata
       );
-      console.log(response.data);
 
-      setUserData({
-        hostName: "",
-        domeName: "",
-        password: "",
-      });
-
-      // Set available state to true and then navigate
-      setAvailable(true);
-
-      navigate("/domhost");
+      if (response.status === 201) {
+        localStorage.setItem("available", "true"); // Setting available in localStorage
+        dispatch(showNavbar());
+        setUserData({ hostName: "", domeName: "", password: "" });
+        navigate("/domhost");
+      }
     } catch (error) {
       console.error("Registration error:", error);
       setError(

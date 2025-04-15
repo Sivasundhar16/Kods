@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showNavbar } from "../redux/navbarSlice"; // Fixed import to use showNavbar instead of show
 
-export const Register = ({ setAvailable }) => {
+export const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userdata, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -14,10 +17,7 @@ export const Register = ({ setAvailable }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setUserData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -31,14 +31,9 @@ export const Register = ({ setAvailable }) => {
       );
 
       if (response.status === 201) {
-        setUserData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        });
-
-        if (setAvailable) setAvailable(true);
+        localStorage.setItem("available", "true"); // Setting available in localStorage
+        dispatch(showNavbar());
+        setUserData({ firstName: "", lastName: "", email: "", password: "" });
         navigate("/admin");
       }
     } catch (error) {

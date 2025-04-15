@@ -65,7 +65,7 @@ const DomUserDetails = () => {
 
   if (!userDetails) {
     return (
-      <div className="min-h-screen w-full bg-gradient-to-r from-purple-50 to-indigo-100 p-6  flex justify-center items-center">
+      <div className="min-h-screen w-full bg-gradient-to-r from-purple-50 to-indigo-100 p-6 flex justify-center items-center">
         <div className="bg-white shadow-lg rounded-xl p-6 max-w-md">
           <p className="text-center text-red-500 mb-4">User not found.</p>
           <div className="text-center">

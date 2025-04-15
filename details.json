@@ -27,146 +27,6 @@
       "lastName": "P",
       "email": "rishitha@gamil.com",
       "password": "12q2343"
-    },
-    {
-      "id": "d4e1",
-      "firstName": "Sundhar",
-      "lastName": "s",
-      "email": "fafdafa@gmail.com",
-      "password": "adfafd"
-    },
-    {
-      "id": "1333",
-      "firstName": "Thor",
-      "lastName": "O",
-      "email": "thor02@gmail.com",
-      "password": "dfafdaf"
-    },
-    {
-      "id": "c776",
-      "firstName": "Robert",
-      "lastName": "jr",
-      "email": "robert@gmail.com",
-      "password": "adfadfhsg"
-    },
-    {
-      "id": "94e4",
-      "hostName": "afadfadf",
-      "domeName": "afdadf",
-      "password": "afadfad"
-    },
-    {
-      "id": "7a4b",
-      "firstName": "Susila",
-      "lastName": "R",
-      "email": "susila02@gmail.com",
-      "password": "adfadfaf"
-    },
-    {
-      "id": "438f",
-      "hostName": "adfadf",
-      "domeName": "afadf",
-      "password": "adfadf"
-    },
-    {
-      "id": "6cb1",
-      "hostName": "adfadf",
-      "domeName": "adfafd",
-      "password": "afdfad"
-    },
-    {
-      "id": "e386",
-      "hostName": "adfadf",
-      "domeName": "afadf",
-      "password": "sfgsg"
-    },
-    {
-      "id": "e22e",
-      "hostName": "afdafd",
-      "domeName": "adfadf",
-      "password": "afad"
-    },
-    {
-      "id": "c37a",
-      "firstName": "Wanda",
-      "lastName": "M",
-      "email": "23324@gmail.com",
-      "password": "wandamaximof"
-    },
-    {
-      "id": "2475",
-      "firstName": "wanda",
-      "lastName": "maximof",
-      "email": "wanda02@gmail.com",
-      "password": "wandsa"
-    },
-    {
-      "id": "0079",
-      "hostName": "Sundhar",
-      "domeName": "private",
-      "password": "dom"
-    },
-    {
-      "id": "7066",
-      "hostName": "adfadf",
-      "domeName": "afaf",
-      "password": "adfaf"
-    },
-    {
-      "id": "0b64",
-      "firstName": "Kanan",
-      "lastName": "r",
-      "email": "adafaf@gmail.com",
-      "password": "adfadfa"
-    },
-    {
-      "id": "205c",
-      "firstName": "fsgfsfg",
-      "lastName": "sfgsfg",
-      "email": "fsgsggf@gmail.com",
-      "password": "adfadfadf"
-    },
-    {
-      "id": "4ae9",
-      "firstName": "Sivasundhar",
-      "lastName": "adfdf",
-      "email": "afaf3532@gmail.com",
-      "password": "afadfadfafd"
-    },
-    {
-      "id": "e299",
-      "firstName": "Sivasundhar",
-      "lastName": "adfa",
-      "email": "adafsf@gmail.com",
-      "password": "adfadf"
-    },
-    {
-      "id": "9b13",
-      "firstName": "Sivasundhar afa",
-      "lastName": "adfaf",
-      "email": "afhdhgdW@gmail.com",
-      "password": "afdfadf"
-    },
-    {
-      "id": "df73",
-      "firstName": "Bhuvana",
-      "lastName": "v",
-      "email": "vadfaf@gmail.com",
-      "password": "adaaddfa"
-    },
-    {
-      "id": "d3c8",
-      "firstName": "adfadfadf",
-      "lastName": "aafdafd",
-      "email": "afadas@gmail.com",
-      "password": "daadfadadf"
-    },
-    {
-      "id": "61e4",
-      "firstName": "sundhar",
-      "lastName": "V",
-      "email": "sundahr@gmail.com",
-      "password": "adfadfadf"
     }
   ],
   "domuser": [
@@ -188,11 +48,12 @@
       "domeName": "private",
       "password": "afdadadfafd"
     },
+
     {
-      "id": "d47c",
-      "hostName": "new user",
+      "id": "cae2",
+      "hostName": "Rishitha",
       "domeName": "Private",
-      "password": "afadadfa"
+      "password": "rishitha"
     }
   ]
 }
